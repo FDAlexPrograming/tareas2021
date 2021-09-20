@@ -1,7 +1,10 @@
 <?php
 
+function conectar(){
+    return new PDO('mysql:host=localhost;'.'dbname=basededatos_tareas;charse=utf8','root','');
+}
 function getTareas(){
-    $basededatos = new PDO('mysql:host=localhost;'.'dbname=basededatos_tareas;charse=utf8','root','');
+    $basededatos = conectar();
     $sentencia = $basededatos->prepare("select * from tareas");
     $sentencia->execute();
     $tareas = $sentencia->fetchAll(PDO::FETCH_OBJ);
@@ -9,10 +12,17 @@ function getTareas(){
   
 }
 
-function insertarTarea($nombre,$descripcion){
-    $basededatos = new PDO('mysql:host=localhost;'.'dbname=basededatos_tareas;charse=utf8','root','');
+function insertarTarea($nombre,$descripcion,$prioridad,$finalizado){
+    $basededatos = conectar();
     $sentencia = $basededatos->prepare(
-        "INSERT INTO tareas(titulo, descripccion, prioridad, finalizado)
-         VALUES(?,?,?,?)");
-    
+        "INSERT INTO tareas(titulo, descripcion, prioridad, finalizado) /* nombre de la base de datos */        VALUES(?,?,?,?)");
+    $sentencia->execute(array($nombre,$descripcion,$prioridad,$finalizado));   
+
+}
+
+function   borrarTareaBaseDeDatos($id){
+    $basededatos = conectar();
+    $sentencia = $basededatos->prepare("DELETE FROM tareas WHERE id_tarea=?");
+    $sentencia->execute(array($id));   
+
 }

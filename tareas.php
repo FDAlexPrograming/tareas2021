@@ -18,7 +18,7 @@ function home(){
         <ul>';
             $tareas = getTareas();
                 foreach($tareas as $tarea){
-                    $html .= '<li>'.$tarea->titulo.':'.$tarea->descripcion.'</li>';
+                    $html .= '<li>'.$tarea->titulo.':'.$tarea->descripcion.' - '.'<a href="borrarTarea/'.$tarea->id_tarea.'"> Borrar</a>'.'</li>';
                 }
             $html .=  '
         </ul>
@@ -36,5 +36,22 @@ function home(){
     </html>';
             
     echo $html;
+}
+
+function crearTarea(){
+    if(!isset($_POST['finalizar'])){
+        $finalizar = 0;
+
+    }else{
+        $finalizar = 1;
+    }
+    insertarTarea($_POST['titulo'],$_POST['descripcion'],$_POST['prioridad'],$finalizar); // nombres del form
+    header("Location: home");
+}
+
+function borrarTarea($id){
+    borrarTareaBaseDeDatos($id);
+    header("Location: ".BASE_URL."/home");
+    
 }
   

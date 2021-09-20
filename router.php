@@ -20,6 +20,12 @@ switch ($params[0]) {
     case 'home': 
         home();
         break;
+        case 'crearTarea': 
+            crearTarea();
+            break;
+        case 'borrarTarea': 
+            borrarTarea($params[1]);
+            break;
     default:
         echo '404 Page boy found';
         break;   
