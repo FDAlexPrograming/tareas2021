@@ -5,8 +5,6 @@ function getTareas(){
     $sentencia = $basededatos->prepare("select * from tareas");
     $sentencia->execute();
     $tareas = $sentencia->fetchAll(PDO::FETCH_OBJ);
-    foreach($tareas as $tarea){
-        echo $tarea->titulo;
-    }
-   
+    return $tareas;
+  
 }

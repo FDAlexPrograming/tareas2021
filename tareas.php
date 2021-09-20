@@ -12,13 +12,15 @@ function home(){
         <link rel="stylesheet" href="style.css">
         <title>Tareas</title>
     </head>
-    
+    <body>
         <h1>Tareas 2021</h1>
     
-        <ul>
-            <li>Tarea 1</li>
-            <li>Tarea 2</li> 
-            <li>Tarea 3</li>
+        <ul>';
+            $tareas = getTareas();
+                foreach($tareas as $tarea){
+                    $html .= '<li>'.$tarea->titulo.'</li>';
+                }
+            $html .=  '
         </ul>
     
         <form action="crearTarea" method="POST">
@@ -29,9 +31,10 @@ function home(){
             <input type="submit" value="Guardar">
             
         </form>
-    <body>
+  
     </body>
     </html>';
-
+            
     echo $html;
 }
+  
