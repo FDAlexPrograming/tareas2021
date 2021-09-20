@@ -26,3 +26,18 @@ function   borrarTareaBaseDeDatos($id){
     $sentencia->execute(array($id));   
 
 }
+
+function actualizarTareaBaseDeDatos($id){
+    $basededatos = conectar();
+    $sentencia = $basededatos->prepare("UPDATE tareas SET finalizado=1 WHERE id_tarea=?");
+    $sentencia->execute(array($id));   
+
+}
+
+function getTarea($id){
+    $basededatos = conectar();
+    $sentencia = $basededatos->prepare("select * from tareas WHERE id_tarea=?");
+    $sentencia->execute(array($id));   
+    $tarea = $sentencia->fetch(PDO::FETCH_OBJ);
+    return $tarea;
+}

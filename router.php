@@ -26,6 +26,12 @@ switch ($params[0]) {
         case 'borrarTarea': 
             borrarTarea($params[1]);
             break;
+        case 'actualizarTarea': 
+            actualizarTarea($params[1]);
+            break;
+        case 'verTarea': 
+            verTarea($params[1]);
+            break;
     default:
         echo '404 Page boy found';
         break;   
