@@ -18,7 +18,7 @@ function home(){
         <ul>';
             $tareas = getTareas();
                 foreach($tareas as $tarea){
-                    $html .= '<li>'.$tarea->titulo.'</li>';
+                    $html .= '<li>'.$tarea->titulo.':'.$tarea->descripcion.'</li>';
                 }
             $html .=  '
         </ul>

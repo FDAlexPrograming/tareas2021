@@ -8,3 +8,11 @@ function getTareas(){
     return $tareas;
   
 }
+
+function insertarTarea($nombre,$descripcion){
+    $basededatos = new PDO('mysql:host=localhost;'.'dbname=basededatos_tareas;charse=utf8','root','');
+    $sentencia = $basededatos->prepare(
+        "INSERT INTO tareas(titulo, descripccion, prioridad, finalizado)
+         VALUES(?,?,?,?)");
+    
+}
