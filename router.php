@@ -1,6 +1,7 @@
 <?php
 require_once "basededatos.php";
 require_once "tareas.php";
+require_once "Controller/TareaController.php";
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -12,26 +13,27 @@ if (!empty($_GET['action'])) {
     $action = 'home'; // acción por defecto si no envían
 }
 
+$tareaController = new TareaController();
 
 $params = explode('/', $action);
 
 
 switch ($params[0]) {
     case 'home': 
-        home();
+       $tareaController->home();
         break;
-        case 'crearTarea': 
-            crearTarea();
-            break;
-        case 'borrarTarea': 
-            borrarTarea($params[1]);
-            break;
-        case 'actualizarTarea': 
-            actualizarTarea($params[1]);
-            break;
-        case 'verTarea': 
-            verTarea($params[1]);
-            break;
+    case 'crearTarea': 
+        crearTarea();
+        break;
+    case 'borrarTarea': 
+        borrarTarea($params[1]);
+        break;
+    case 'actualizarTarea': 
+        actualizarTarea($params[1]);
+        break;
+    case 'verTarea': 
+        verTarea($params[1]);
+        break;
     default:
         echo '404 Page boy found';
         break;   
