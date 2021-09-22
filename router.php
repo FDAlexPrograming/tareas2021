@@ -33,6 +33,6 @@ switch ($params[0]) {
         $tareaController->verTarea($params[1]);
         break;
     default:
-        echo '404 Page boy found';
+        echo '404 Page noy found';
         break;   
 }
