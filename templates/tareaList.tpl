@@ -8,7 +8,7 @@
             <li class="{if $tarea->finalizado} finalizada {/if}">
                <a href="verTarea/{$tarea->id_tarea}">{$tarea->titulo}</a>:{$tarea->descripcion}
                 <a href="borrarTarea/{$tarea->id_tarea}"> Borrar</a>
-                <a href="actualizarTarea{$tarea->id_tarea}">Finalizar</a>
+                <a href="actualizarTarea/{$tarea->id_tarea}">Finalizar</a>
             </li>
         {/foreach}
     </ul>
