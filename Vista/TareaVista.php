@@ -46,4 +46,9 @@ class TareaVista{
                 
         echo $html;
     }
+    function homeLocation(){
+        header("Location:".BASE_URL."/home");
+    }
+
+  
 }
