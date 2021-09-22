@@ -34,7 +34,6 @@ class TareaModel{
         $sentencia->execute(array($id));   
     
     }
-
     
     function getTarea($id){
         $sentencia = $this->basededatos->prepare("select * from tareas WHERE id_tarea=?");
@@ -42,5 +41,4 @@ class TareaModel{
         $tarea = $sentencia->fetch(PDO::FETCH_OBJ);
         return $tarea;
     }
-
 }
